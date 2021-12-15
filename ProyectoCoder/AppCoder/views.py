@@ -14,3 +14,13 @@ def jugadores(request):
     
     #return HttpResponse("Esto es una prueba del inicio")
     return render(request, 'AppCoder/jugadores.html')
+
+def equipos(request):
+    
+    #return HttpResponse("Esto es una prueba del inicio")
+    return render(request, 'AppCoder/equipos.html')
+
+def estadios(request):
+    
+    #return HttpResponse("Esto es una prueba del inicio")
+    return render(request, 'AppCoder/estadios.html')
