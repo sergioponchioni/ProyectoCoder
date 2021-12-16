@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from django.http import HttpResponse
 
-from AppCoder.models import Estadio
+from AppCoder.models import Estadio, Liga
 
 # Create your views here.
 
@@ -20,6 +20,20 @@ def estadioFormulario(request):
         
     
     return render(request, 'AppCoder/estadioFormulario.html')
+
+def ligaFormulario(request):
+    
+    #obtiene los valores
+    if request.method == "POST":
+        
+        liga = Liga( nombre = request.POST['nombre'], cantidadDeEquipos = request.POST['cantidadDeEquipos'], pais = request.POST['pais'])
+        
+        liga.save()
+        
+        return render(request, 'AppCoder/inicio.html')
+        
+    
+    return render(request, 'AppCoder/ligaFormulario.html')
 
 #Primer vista
 def inicio(request):
@@ -41,4 +55,9 @@ def estadios(request):
     
     #return HttpResponse("Esto es una prueba del inicio")
     return render(request, 'AppCoder/estadios.html')
+
+def ligas(request):
+    
+    #return HttpResponse("Esto es una prueba del inicio")
+    return render(request, 'AppCoder/ligas.html')
 

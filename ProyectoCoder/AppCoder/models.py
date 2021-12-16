@@ -38,7 +38,15 @@ class Estadio(models.Model):
     def __str__(self) :
         
         return f"NOMBRE {self.nombre} --- CAPACIDAD {self.capacidad} --- DIRECCION {self.direccion} --- ANIOFUNDACION {self.anioFundacion}"
-        #Comentario
-        #Otro Comentario de prueba
-        #otro mas
+
+class Liga(models.Model):
+    
+    nombre=models.CharField(max_length=40)
+    cantidadDeEquipos=models.IntegerField()
+    pais=models.CharField(max_length=40)
+    
+    def __str__(self) :
+        
+        return f"NOMBRE {self.nombre} --- CANTIDAD DE EQUIPOS {self.cantidadDeEquipos} --- PAIS {self.pais}" 
+    
  
