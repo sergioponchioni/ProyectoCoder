@@ -13,3 +13,5 @@ admin.site.register(Equipo)
 admin.site.register(Estadio)
 
 admin.site.register(Liga)
+
+admin.site.register(Arbitro)

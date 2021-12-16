@@ -50,3 +50,12 @@ class Liga(models.Model):
         return f"NOMBRE {self.nombre} --- CANTIDAD DE EQUIPOS {self.cantidadDeEquipos} --- PAIS {self.pais}" 
     
  
+class Arbitro(models.Model):
+
+    nombre=models.CharField(max_length=40)
+    nacionalidad=models.CharField(max_length=40)
+    edad=models.IntegerField()
+    dirigeBien= models.BooleanField()
+    def __str__(self) :
+        
+        return f"NOMBRE {self.nombre} --- NACIONALIDAD {self.nacionalidad} --- EDAD {self.edad} --- DIRIGEBIEN {self.dirigeBien}" 
