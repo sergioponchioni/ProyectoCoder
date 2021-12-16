@@ -38,5 +38,6 @@ class Estadio(models.Model):
     def __str__(self) :
         
         return f"NOMBRE {self.nombre} --- CAPACIDAD {self.capacidad} --- DIRECCION {self.direccion} --- ANIOFUNDACION {self.anioFundacion}"
-    
+        #Comentario
+        #Otro Comentario de prueba
  
