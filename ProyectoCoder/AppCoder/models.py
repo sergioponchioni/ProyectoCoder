@@ -39,5 +39,5 @@ class Estadio(models.Model):
         
         return f"NOMBRE {self.nombre} --- CAPACIDAD {self.capacidad} --- DIRECCION {self.direccion} --- ANIOFUNDACION {self.anioFundacion}"
         #Comentario
-    
+        #Otro Comentario de prueba
  
