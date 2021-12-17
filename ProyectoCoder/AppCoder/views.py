@@ -62,7 +62,6 @@ def arbitroFormulario(request):
         
     
     return render(request, 'AppCoder/arbitroFormulario.html')
-
 #Primer vista
 def inicio(request):
     
