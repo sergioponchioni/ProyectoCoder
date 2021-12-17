@@ -2,9 +2,24 @@ from django.shortcuts import render
 
 from django.http import HttpResponse
 
-from AppCoder.models import Estadio, Liga
+from AppCoder.models import Estadio, Liga, Arbitro, Seleccion
 
 # Create your views here.
+
+def seleccionFormulario(request):
+    
+    #obtiene los valores
+    if request.method == "POST":
+        
+        seleccion = Seleccion( nombre = request.POST['nombre'], continente = request.POST['continente'], tecnico = request.POST['tecnico'] )
+        
+        seleccion.save()
+        
+        return render(request, 'AppCoder/inicio.html')
+        
+    
+    return render(request, 'AppCoder/seleccionFormulario.html')
+
 
 #Formularios
 def estadioFormulario(request):
@@ -34,6 +49,19 @@ def ligaFormulario(request):
         
     
     return render(request, 'AppCoder/ligaFormulario.html')
+def arbitroFormulario(request):
+    
+    #obtiene los valores
+    if request.method == "POST":
+        
+        arbitro = Arbitro( nombre = request.POST['nombre'], nacionalidad = request.POST['nacionalidad'], edad = request.POST['edad'] )
+        
+        arbitro.save()
+        
+        return render(request, 'AppCoder/inicio.html')
+        
+    
+    return render(request, 'AppCoder/arbitroFormulario.html')
 
 #Primer vista
 def inicio(request):
@@ -60,4 +88,14 @@ def ligas(request):
     
     #return HttpResponse("Esto es una prueba del inicio")
     return render(request, 'AppCoder/ligas.html')
+
+def arbitros(request):
+    
+    #return HttpResponse("Esto es una prueba del inicio")
+    return render(request, 'AppCoder/arbitros.html')
+
+def selecciones(request):
+    
+    #return HttpResponse("Esto es una prueba del inicio")
+    return render(request, 'AppCoder/selecciones.html')
 

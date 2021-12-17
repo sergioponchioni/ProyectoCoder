@@ -10,6 +10,11 @@ urlpatterns = [
     path('estadioFormulario/', views.estadioFormulario, name="EstadioFormulario"),
     path('ligas/', views.ligas, name="Ligas"),
     path('ligaFormulario/', views.ligaFormulario, name="LigaFormulario"),
+    path('arbitros/', views.arbitros, name="Arbitros"),
+    path('arbitroFormulario/', views.arbitroFormulario, name="ArbitroFormulario"),
+    path('selecciones/', views.selecciones, name="Selecciones"),
+    path('seleccionFormulario/', views.seleccionFormulario, name="SeleccionFormulario"),
+
 
 
 ]

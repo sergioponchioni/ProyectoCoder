@@ -48,5 +48,26 @@ class Liga(models.Model):
     def __str__(self) :
         
         return f"NOMBRE {self.nombre} --- CANTIDAD DE EQUIPOS {self.cantidadDeEquipos} --- PAIS {self.pais}" 
+
+
+class Arbitro(models.Model):
+
+    nombre=models.CharField(max_length=40)
+    nacionalidad=models.CharField(max_length=40)
+    edad=models.IntegerField()
+    
+    def __str__(self) :
+        
+        return f"NOMBRE {self.nombre} --- NACIONALIDAD {self.nacionalidad} --- EDAD {self.edad} --- DIRIGEBIEN {self.dirigeBien}" 
+
+class Seleccion(models.Model):
+    
+    nombre=models.CharField(max_length=40)
+    continente=models.CharField(max_length=40)
+    tecnico=models.CharField(max_length=40)
+    
+    def __str__(self) :
+        
+        return f"NOMBRE {self.nombre} --- CONTINENTE {self.continente} --- TECNICO {self.tecnico}" 
     
  
