@@ -10,15 +10,22 @@
 
     {% block contenidoDinamico %}
 
+
+        {% if miFormulario.errors %}
+
+        <p>ERROOOOR</p>
+
+        {% endif %}
+
         <form action="/AppCoder/estadioFormulario/" method="POST"> {% csrf_token %}
 
             <table>
 
-                {{ miformulario.as_table }}
+                {{     miFormulario.as_table      }}
 
             </table>
 
-            <input type="submit" value="Envio">
+            <input type="submit" value="Enviar">
 
         </form>
 

@@ -10,13 +10,19 @@
 
     {% block contenidoDinamico %}
 
+    {% if miFormulario.errors %}
+
+    <p>ERROOOOR</p>
+
+    {% endif %}
+
         <form action="/AppCoder/ligaFormulario/" method="POST"> {% csrf_token %}
 
-            <p>Nombre: <input type="text" name="nombre"></p>
+            <table>
 
-            <p>Cantidad de equipos: <input type="number" name="cantidadDeEquipos"></p>
+                {{     miFormulario.as_table      }}
 
-            <p>Pais: <input type="text" name="pais"></p>
+            </table>
 
             <input type="submit" value="Envio">
 

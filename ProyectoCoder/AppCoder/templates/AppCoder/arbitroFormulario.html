@@ -10,13 +10,20 @@
 
     {% block contenidoDinamico %}
 
+        
+        {% if miFormulario.errors %}
+
+        <p>ERROOOOR</p>
+
+        {% endif %}
+
         <form action="/AppCoder/arbitroFormulario/" method="POST"> {% csrf_token %}
 
-            <p>Nombre: <input type="text" name="nombre"></p>
+            <table>
 
-            <p>Nacionalidad: <input type="text" name="nacionalidad"></p>
+                {{     miFormulario.as_table      }}
 
-            <p>Edad: <input type="number" name="edad"></p>
+            </table>
 
             <input type="submit" value="Envio">
 

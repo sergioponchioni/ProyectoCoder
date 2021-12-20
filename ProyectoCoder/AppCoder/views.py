@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from AppCoder.models import Estadio, Liga, Arbitro, Seleccion
+from AppCoder.forms import EstadioFormulario, ArbitroFormulario, SeleccionFormulario, LigaFormulario
 
 # Create your views here.
 
@@ -11,14 +12,23 @@ def seleccionFormulario(request):
     #obtiene los valores
     if request.method == "POST":
         
-        seleccion = Seleccion( nombre = request.POST['nombre'], continente = request.POST['continente'], tecnico = request.POST['tecnico'] )
+        miFormulario = SeleccionFormulario(request.POST)
         
-        seleccion.save()
+        if miFormulario.is_valid():
+            
+            informacion = miFormulario.cleaned_data
         
-        return render(request, 'AppCoder/inicio.html')
-        
+            seleccion = Seleccion( nombre = informacion['nombre'], continente = informacion['continente'], tecnico = informacion['tecnico'] )
+            
+            seleccion.save()
+            
+            return render(request, 'AppCoder/inicio.html')
     
-    return render(request, 'AppCoder/seleccionFormulario.html')
+    else:
+        
+        miFormulario = SeleccionFormulario()
+    
+    return render(request, 'AppCoder/seleccionFormulario.html', {"miFormulario": miFormulario})
 
 
 #Formularios
@@ -27,41 +37,70 @@ def estadioFormulario(request):
     #obtiene los valores
     if request.method == "POST":
         
-        estadio = Estadio( nombre = request.POST['nombre'], capacidad = request.POST['capacidad'], direccion = request.POST['direccion'], anioFundacion = request.POST['anioFundacion'] )
+        miFormulario = EstadioFormulario(request.POST)
         
-        estadio.save()
+        if miFormulario.is_valid():
+            
+            informacion = miFormulario.cleaned_data
         
-        return render(request, 'AppCoder/inicio.html')
+            estadio = Estadio( nombre = informacion['nombre'], capacidad = informacion['capacidad'], direccion = informacion['direccion'], anioFundacion = informacion['anioFundacion'] )
+            
+            estadio.save()
+            
+            return render(request, 'AppCoder/inicio.html')
+    
+    else:
+        
+        miFormulario = EstadioFormulario()
         
     
-    return render(request, 'AppCoder/estadioFormulario.html')
+    return render(request, 'AppCoder/estadioFormulario.html', {"miFormulario": miFormulario})
 
 def ligaFormulario(request):
     
     #obtiene los valores
     if request.method == "POST":
         
-        liga = Liga( nombre = request.POST['nombre'], cantidadDeEquipos = request.POST['cantidadDeEquipos'], pais = request.POST['pais'])
+        miFormulario = LigaFormulario(request.POST)
         
-        liga.save()
+        if miFormulario.is_valid():
+                
+            informacion = miFormulario.cleaned_data
         
-        return render(request, 'AppCoder/inicio.html')
+            liga = Liga( nombre = informacion['nombre'], cantidadDeEquipos = informacion['cantidadDeEquipos'], pais = informacion['pais'])
+            
+            liga.save()
+            
+            return render(request, 'AppCoder/inicio.html')
+    else:
         
+        miFormulario = LigaFormulario()   
     
-    return render(request, 'AppCoder/ligaFormulario.html')
+    return render(request, 'AppCoder/ligaFormulario.html', {"miFormulario": miFormulario})
+
 def arbitroFormulario(request):
     
     #obtiene los valores
     if request.method == "POST":
         
-        arbitro = Arbitro( nombre = request.POST['nombre'], nacionalidad = request.POST['nacionalidad'], edad = request.POST['edad'] )
+        miFormulario = ArbitroFormulario(request.POST)
         
-        arbitro.save()
+        if miFormulario.is_valid():
+                
+            informacion = miFormulario.cleaned_data
+            
+            arbitro = Arbitro( nombre = informacion['nombre'], nacionalidad = informacion['nacionalidad'], edad = informacion['edad'] )
+            
+            arbitro.save()
+            
+            return render(request, 'AppCoder/inicio.html')
         
-        return render(request, 'AppCoder/inicio.html')
+    else:
+        
+        miFormulario = ArbitroFormulario()
         
     
-    return render(request, 'AppCoder/arbitroFormulario.html')
+    return render(request, 'AppCoder/arbitroFormulario.html', {"miFormulario": miFormulario})
 #Primer vista
 def inicio(request):
     

@@ -10,13 +10,19 @@
 
     {% block contenidoDinamico %}
 
+    {% if miFormulario.errors %}
+
+    <p>ERROOOOR</p>
+
+    {% endif %}
+
         <form action="/AppCoder/seleccionFormulario/" method="POST"> {% csrf_token %}
 
-            <p>Nombre: <input type="text" name="nombre"></p>
+            <table>
 
-            <p>Tecnico: <input type="text" name="tecnico"></p>
+                {{     miFormulario.as_table      }}
 
-            <p>Continente: <input type="text" name="continente"></p>
+            </table>
 
             <input type="submit" value="Envio">
 
