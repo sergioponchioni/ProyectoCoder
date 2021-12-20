@@ -12,13 +12,11 @@
 
         <form action="/AppCoder/estadioFormulario/" method="POST"> {% csrf_token %}
 
-            <p>Nombre: <input type="text" name="nombre"></p>
+            <table>
 
-            <p>Capacidad: <input type="number" name="capacidad"></p>
+                {{ miformulario.as_table }}
 
-            <p>Direccion: <input type="text" name="direccion"></p>
-
-            <p>Año de fundación: <input type="number" name="anioFundacion"></p>
+            </table>
 
             <input type="submit" value="Envio">
 
